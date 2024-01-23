@@ -1,0 +1,104 @@
+<div class="form">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Nombre" formControlName="nombre" required />
+      <mat-error *ngIf="myForm.get('nombre')?.hasError('required')"
+        >Nombre is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Descripción"
+        formControlName="descripcion"
+        required
+      />
+      <mat-error *ngIf="myForm.get('descripcion')?.hasError('required')"
+        >Descripción is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        placeholder="Fecha Adquisición"
+        formControlName="fechaAdquisicion"
+        required
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="myForm.get('fechaAdquisicion')?.hasError('required')"
+        >Fecha Adquisición is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Valor Compra"
+        formControlName="valorCompra"
+        required
+      />
+      <mat-error *ngIf="myForm.get('valorCompra')?.hasError('required')"
+        >Valor Compra is required</mat-error
+      >
+      <mat-error *ngIf="myForm.get('valorCompra')?.hasError('min')"
+        >Valor Compra must be greater than or equal to 0</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Valor Libro"
+        formControlName="valorLibro"
+        required
+      />
+      <mat-error *ngIf="myForm.get('valorLibro')?.hasError('required')"
+        >Valor Libro is required</mat-error
+      >
+      <mat-error *ngIf="myForm.get('valorLibro')?.hasError('min')"
+        >Valor Libro must be greater than or equal to 0</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Valor Mercado"
+        formControlName="valorMercado"
+        required
+      />
+      <mat-error *ngIf="myForm.get('valorMercado')?.hasError('required')"
+        >Valor Mercado is required</mat-error
+      >
+      <mat-error *ngIf="myForm.get('valorMercado')?.hasError('min')"
+        >Valor Mercado must be greater than or equal to 0</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Estado" formControlName="estado" required />
+      <mat-error *ngIf="myForm.get('estado')?.hasError('required')"
+        >Estado is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field *ngIf="ubicaciones.length">
+      <mat-select formControlName="ubicacion">
+        <mat-option *ngFor="let option of ubicaciones" [value]="option.id">
+          {{ option.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="form-action-buttons">
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+      <button type="button" color="warn" mat-dialog-close mat-stroked-button>
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

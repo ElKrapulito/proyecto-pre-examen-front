@@ -1,0 +1,22 @@
+.form {
+    width: 50%;
+    height: 70%;
+    margin: 0 auto;
+    padding: 3% 5%;
+}
+
+mat-form-field {
+    margin: 8px 0;
+    width: 100%;
+}
+
+h1 {
+    margin: 10px auto;
+    text-align: center;
+}
+
+.form-action-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
